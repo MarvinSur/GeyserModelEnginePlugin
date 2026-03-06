@@ -27,7 +27,6 @@ public class ModelEngineListener implements Listener {
         plugin.getModelManager().getModelHandler().createModel(event.getTarget(), event.getModel());
     }
 
-    // Needs Testing
     @EventHandler(priority = EventPriority.MONITOR)
     public void onModelMount(ModelMountEvent event) {
         if (!event.isDriver()) return;

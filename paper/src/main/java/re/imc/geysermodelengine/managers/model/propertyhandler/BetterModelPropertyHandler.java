@@ -131,7 +131,7 @@ public class BetterModelPropertyHandler implements PropertyHandler {
             }
         }
 
-        if (plugin.getConfigManager().getConfig().getBoolean("options.debug")) plugin.getLogger().info(animUpdates.toString());
+        if (plugin.getConfigManager().getConfig().getBoolean("options.debug.animations")) plugin.getLogger().info(animUpdates.toString());
 
         List<String> list = new ArrayList<>(boneUpdates.keySet());
         Collections.sort(list);

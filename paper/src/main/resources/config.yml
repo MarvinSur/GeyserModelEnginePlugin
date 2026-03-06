@@ -14,6 +14,7 @@ options:
     spawn: false
     animations: false
     send-data: false
+    location: false
     death: false
   hooks:
     floodgate: true # Recommended method

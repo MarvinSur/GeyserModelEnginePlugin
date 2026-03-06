@@ -98,6 +98,7 @@ public class BetterModelTaskHandler implements TaskHandler {
         BetterModelEntityData betterModelEntityData = (BetterModelEntityData) entityData;
 
         EntityUtils.setCustomEntity(player, betterModelEntityData.getEntity().getEntityId(), plugin.getConfigManager().getConfig().getString("models.namespace") + ":" + betterModelEntityData.getEntityTracker().name().toLowerCase());
+        if (plugin.getConfigManager().getConfig().getBoolean("options.debug.send-data")) plugin.getLogger().info("Setting custom entity data for " + betterModelEntityData.getEntityTracker().name());
 
         plugin.getSchedulerPool().schedule(() -> {
             entityData.getEntity().sendSpawnPacket(Collections.singletonList(player));

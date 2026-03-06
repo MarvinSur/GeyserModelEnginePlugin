@@ -46,6 +46,8 @@ public class BetterModelHandler implements ModelHandler {
 
         plugin.getModelManager().getModelEntitiesCache().put(entityID, model);
         entityDataCache.put(model, entityData);
+
+        if (plugin.getConfigManager().getConfig().getBoolean("options.debug.spawn")) plugin.getLogger().info("Creating model for " + model.getName());
     }
 
     @Override
