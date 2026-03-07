@@ -64,6 +64,8 @@ public class ModelEngineHandler implements ModelHandler {
         model.ifPresent(m -> createModel(modeledEntity, m));
     }
 
+    // TODO ModelEngine canSee impl
+
     @Override
     public void loadListeners() {
         Bukkit.getPluginManager().registerEvents(new ModelEngineListener(plugin), plugin);

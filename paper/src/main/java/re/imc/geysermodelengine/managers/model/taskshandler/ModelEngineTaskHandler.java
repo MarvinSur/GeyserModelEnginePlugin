@@ -42,7 +42,13 @@ public class ModelEngineTaskHandler implements TaskHandler {
         this.entityData = entityData;
 
         plugin.getEntityTaskManager().sendHitBoxToAll(entityData);
-        scheduledFuture = plugin.getSchedulerPool().scheduleAtFixedRate(this::runAsync, 0, 20, TimeUnit.MILLISECONDS);
+        scheduledFuture = plugin.getSchedulerPool().scheduleAtFixedRate(() -> {
+            try {
+                runAsync();
+            } catch (Throwable err) {
+                err.printStackTrace();
+            }
+        }, 0, 20, TimeUnit.MILLISECONDS);
     }
 
     @Override
@@ -67,19 +73,18 @@ public class ModelEngineTaskHandler implements TaskHandler {
             plugin.getModelManager().getEntitiesCache().remove(modeledEntity.getBase().getEntityId());
             plugin.getModelManager().getModelEntitiesCache().remove(modeledEntity.getBase().getEntityId());
 
-            if (plugin.getConfigManager().getConfig().getBoolean("options.debug.death")) plugin.getLogger().info(activeModel.getBlueprint().getName() + " has died, removing runAsync!");
+            if (plugin.getConfigManager().getConfig().getBoolean("options.debug.death"))
+                plugin.getLogger().info(activeModel.getBlueprint().getName() + " has died, removing runAsync!");
 
             cancel();
             return;
         }
 
-        if (tick % 5 == 0) {
-            if (tick % 40 == 0) {
-                viewers.removeIf(viewer -> !plugin.getEntityTaskManager().canSee(viewer, entityData.getEntity()));
-            }
+        if (tick % 40 == 0) {
+            viewers.removeIf(viewer -> !plugin.getEntityTaskManager().canSee(viewer, entityData.getEntity(), entityData.getModelInstance()));
         }
 
-        tick ++;
+        tick++;
         if (tick > 400) {
             tick = 0;
             plugin.getEntityTaskManager().sendHitBoxToAll(entityData);

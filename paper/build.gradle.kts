@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "re.imc"
-version = "1.0.5"
+version = "1.0.6"
 
 repositories {
     mavenCentral()
@@ -24,8 +24,8 @@ dependencies {
     implementation("dev.jorel:commandapi-paper-shade:11.1.0")
 
     compileOnly("com.ticxo.modelengine:ModelEngine:R4.1.0")
-    compileOnly("io.github.toxicity188:bettermodel-api:2.0.1")
-    compileOnly("io.github.toxicity188:bettermodel-bukkit-api:2.0.1")
+    compileOnly("io.github.toxicity188:bettermodel-api:2.2.0")
+    compileOnly("io.github.toxicity188:bettermodel-bukkit-api:2.2.0")
     
     compileOnly(files("libs/geyserutils-spigot-1.0-SNAPSHOT.jar"))
     compileOnly("org.geysermc.floodgate:api:2.2.4-SNAPSHOT")

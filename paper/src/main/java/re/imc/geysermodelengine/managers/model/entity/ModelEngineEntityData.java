@@ -57,6 +57,11 @@ public class ModelEngineEntityData implements EntityData {
     }
 
     @Override
+    public Object getModelInstance() {
+        return activeModel;
+    }
+
+    @Override
     public ModelEngineTaskHandler getEntityTask() {
         return entityTask;
     }

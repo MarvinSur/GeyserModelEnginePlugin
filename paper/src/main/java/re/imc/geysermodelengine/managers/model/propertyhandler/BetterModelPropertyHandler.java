@@ -5,6 +5,9 @@ import kr.toxicity.model.api.bone.RenderedBone;
 import kr.toxicity.model.api.data.blueprint.BlueprintAnimation;
 import kr.toxicity.model.api.data.renderer.RenderPipeline;
 import kr.toxicity.model.api.nms.ModelDisplay;
+import kr.toxicity.model.api.tracker.ModelScaler;
+import kr.toxicity.model.api.tracker.Tracker;
+import kr.toxicity.model.api.util.function.BonePredicate;
 import me.zimzaza4.geyserutils.spigot.api.EntityUtils;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
@@ -25,12 +28,13 @@ public class BetterModelPropertyHandler implements PropertyHandler {
         this.plugin = plugin;
     }
 
-    // Figure out on how to get the scale from BetterModel
     @Override
     public void sendScale(EntityData entityData, Collection<Player> players, float lastScale, boolean firstSend) {
         BetterModelEntityData betterModelEntityData = (BetterModelEntityData) entityData;
-
-
+        Tracker tracker = (Tracker) betterModelEntityData.getModelInstance();
+        ModelScaler scaler = tracker.scaler();
+        var scale = scaler.scale(tracker);
+        players.forEach(player -> EntityUtils.sendCustomScale(player, betterModelEntityData.getEntity().getEntityId(), scale));
     }
 
     @Override
@@ -56,9 +60,7 @@ public class BetterModelPropertyHandler implements PropertyHandler {
     @Override
     public void sendHitBox(EntityData entityData, Player player) {
         BetterModelEntityData betterModelEntityData = (BetterModelEntityData) entityData;
-
         float w = 0;
-
         EntityUtils.sendCustomHitBox(player, betterModelEntityData.getEntity().getEntityId(), 0.02f, w);
     }
 
@@ -67,7 +69,6 @@ public class BetterModelPropertyHandler implements PropertyHandler {
         BetterModelEntityData model = (BetterModelEntityData) entityData;
 
         int entity = model.getEntity().getEntityId();
-        Set<String> forceAnimSet = Set.of(forceAnims);
 
         Map<String, Boolean> boneUpdates = new HashMap<>();
         Map<String, Boolean> animUpdates = new HashMap<>();
@@ -80,7 +81,6 @@ public class BetterModelPropertyHandler implements PropertyHandler {
         for (RenderedBone renderedBone : handler.bones()) {
             if (model.getEntityTracker().bone(renderedBone.name()).runningAnimation() != null) {
                 BlueprintAnimation anim = model.getEntityTracker().renderer().animations().get(renderedBone.runningAnimation().name());
-
                 anims.add(renderedBone.runningAnimation().name());
                 if (anim.override() && anim.loop() == AnimationIterator.Type.PLAY_ONCE) {
                     break;
@@ -133,9 +133,6 @@ public class BetterModelPropertyHandler implements PropertyHandler {
 
         if (plugin.getConfigManager().getConfig().getBoolean("options.debug.animations")) plugin.getLogger().info(animUpdates.toString());
 
-        List<String> list = new ArrayList<>(boneUpdates.keySet());
-        Collections.sort(list);
-
         players.forEach(player -> EntityUtils.sendIntProperties(player, entity, intUpdates));
     }
 
@@ -143,7 +140,7 @@ public class BetterModelPropertyHandler implements PropertyHandler {
         @NotNull String name = bone.name().rawName();
 
         if (name.equals("head")) {
-            if (!bone.getChildren().isEmpty()) return "hi_" + name;
+            if (!bone.getGroup().getChildren().isEmpty()) return "hi_" + name;
             return "h_" + name;
         }
 
@@ -154,9 +151,13 @@ public class BetterModelPropertyHandler implements PropertyHandler {
         String name = unstripName(bone).toLowerCase();
         if (name.equals("hitbox") || name.equals("shadow") || name.equals("mount") || name.startsWith("p_") || name.startsWith("b_") || name.startsWith("ob_")) return;
 
-        for (RenderedBone renderedBone : bone.getChildren().values()) {
-            processBone(entityData, renderedBone, map);
-        }
+        bone.matchTree(BonePredicate.TRUE.children(false), (child, p) -> {
+            if (p.test(child)) {
+                return false;
+            }
+            processBone(entityData, child, map);
+            return true;
+        });
 
         RenderedBone activeBone = entityData.getEntityTracker().bone(bone.name());
 

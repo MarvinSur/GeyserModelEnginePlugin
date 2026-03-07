@@ -77,7 +77,6 @@ public class ModelEnginePropertyHandler implements PropertyHandler {
         ModelEngineEntityData model = (ModelEngineEntityData) entityData;
 
         int entity = model.getEntity().getEntityId();
-        Set<String> forceAnimSet = Set.of(forceAnims);
 
         Map<String, Boolean> boneUpdates = new LinkedHashMap<>();
         Map<String, Boolean> animUpdates = new HashMap<>();

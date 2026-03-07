@@ -4,9 +4,7 @@ import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import kr.toxicity.model.api.entity.BaseEntity;
 import kr.toxicity.model.api.tracker.EntityTracker;
-import kr.toxicity.model.api.tracker.Tracker;
 import me.zimzaza4.geyserutils.spigot.api.EntityUtils;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import re.imc.geysermodelengine.GeyserModelEngine;
 import re.imc.geysermodelengine.managers.model.entity.BetterModelEntityData;
@@ -44,7 +42,13 @@ public class BetterModelTaskHandler implements TaskHandler {
         this.entityData = entityData;
 
         plugin.getEntityTaskManager().sendHitBoxToAll(entityData);
-        scheduledFuture = plugin.getSchedulerPool().scheduleAtFixedRate(this::runAsync, 0, 20, TimeUnit.MILLISECONDS);
+        scheduledFuture = plugin.getSchedulerPool().scheduleAtFixedRate(() -> {
+            try {
+                runAsync();
+            } catch (Throwable err) {
+                err.printStackTrace();
+            }
+        }, 0, 20, TimeUnit.MILLISECONDS);
     }
 
     @Override
@@ -71,14 +75,8 @@ public class BetterModelTaskHandler implements TaskHandler {
             return;
         }
 
-        if (tick % 5 == 0) {
-            if (tick % 40 == 0) {
-                for (Player viewer : Set.copyOf(viewers)) {
-                    if (!plugin.getEntityTaskManager().canSee(viewer, entityData.getEntity())) {
-                        viewers.remove(viewer);
-                    }
-                }
-            }
+        if (tick % 40 == 0) {
+            viewers.removeIf(viewer -> !plugin.getEntityTaskManager().canSee(viewer, entityData.getEntity(), entityData.getModelInstance()));
         }
 
         tick++;

@@ -43,10 +43,10 @@ public class EntityTaskManager {
         for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
             if (!BedrockUtils.isBedrockPlayer(onlinePlayer)) continue;
 
-            if (canSee(onlinePlayer, model.getEntity())) {
+            if (canSee(onlinePlayer, model.getEntity(), model.getModelInstance())) {
                 if (!viewers.contains(onlinePlayer)) {
-                    sendSpawnPacket(model, onlinePlayer);
                     viewers.add(onlinePlayer);
+                    sendSpawnPacket(model, onlinePlayer);
                 }
             } else {
                 if (viewers.contains(onlinePlayer)) {
@@ -70,7 +70,7 @@ public class EntityTaskManager {
         }
     }
 
-    public boolean canSee(Player player, PacketEntity entity) {
+    public boolean canSee(Player player, PacketEntity entity, Object model) {
         if (!player.isOnline()) return false;
         if (!plugin.getModelManager().getPlayerJoinedCache().contains(player.getUniqueId())) return false;
 
@@ -80,6 +80,7 @@ public class EntityTaskManager {
         entityLocation.setY(0);
 
         if (playerLocation.getWorld() != entityLocation.getWorld()) return false;
+        if (!plugin.getModelManager().getModelHandler().canSee(player, model)) return false;
         if (playerLocation.distanceSquared(entityLocation) > player.getSendViewDistance() * player.getSendViewDistance() * 48) return false;
 
         return true;

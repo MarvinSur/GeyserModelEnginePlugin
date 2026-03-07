@@ -28,6 +28,7 @@ public class UpdateTaskRunnable implements Runnable {
                 });
             }
         } catch (Throwable err) {
+            err.printStackTrace();
             throw new RuntimeException(err);
         }
     }

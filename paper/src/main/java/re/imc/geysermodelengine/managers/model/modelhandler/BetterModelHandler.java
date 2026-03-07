@@ -1,10 +1,12 @@
 package re.imc.geysermodelengine.managers.model.modelhandler;
 
+import kr.toxicity.model.api.bukkit.platform.BukkitAdapter;
 import kr.toxicity.model.api.entity.BaseEntity;
 import kr.toxicity.model.api.tracker.EntityTracker;
 import kr.toxicity.model.api.tracker.Tracker;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.Player;
 import re.imc.geysermodelengine.GeyserModelEngine;
 import re.imc.geysermodelengine.listener.BetterModelListener;
 import re.imc.geysermodelengine.managers.model.propertyhandler.PropertyHandler;
@@ -62,5 +64,11 @@ public class BetterModelHandler implements ModelHandler {
     @Override
     public void loadListeners() {
         Bukkit.getPluginManager().registerEvents(new BetterModelListener(plugin), plugin);
+    }
+
+    @Override
+    public boolean canSee(Player player, Object model) {
+        Tracker tracker = (Tracker) model;
+        return !tracker.getPipeline().isHide(BukkitAdapter.adapt(player));
     }
 }

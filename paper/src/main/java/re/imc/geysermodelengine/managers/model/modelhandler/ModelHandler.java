@@ -1,6 +1,7 @@
 package re.imc.geysermodelengine.managers.model.modelhandler;
 
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.Player;
 
 public interface ModelHandler {
 
@@ -20,4 +21,8 @@ public interface ModelHandler {
      * Loads the required listeners
      */
     void loadListeners();
+
+    default boolean canSee(Player player, Object model) {
+        return true;
+    }
 }

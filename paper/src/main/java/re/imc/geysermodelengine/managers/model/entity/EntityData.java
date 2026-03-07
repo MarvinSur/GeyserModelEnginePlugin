@@ -27,4 +27,9 @@ public interface EntityData {
      * Get the entity task handler
      */
     TaskHandler getEntityTask();
+
+    /**
+     * Gets the model of the entity
+     */
+    Object getModelInstance();
 }

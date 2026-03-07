@@ -28,6 +28,7 @@ public class BetterModelEntityData implements EntityData {
 
     private final BaseEntity entitySource;
     private final EntityTracker entityTracker;
+    // TODO DummyTracker support
 
     private BetterModelTaskHandler entityTask;
 
@@ -70,6 +71,11 @@ public class BetterModelEntityData implements EntityData {
     @Override
     public BetterModelTaskHandler getEntityTask() {
         return entityTask;
+    }
+
+    @Override
+    public Object getModelInstance() {
+        return entityTracker;
     }
 
     public void setHurt(boolean hurt) {
