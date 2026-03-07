@@ -47,6 +47,10 @@ public class PacketEntity {
     }
 
     public boolean teleport(@NotNull Location location) {
+        if (location.getWorld() == null) {
+            // i dont know why some ModelEngine models have a null world
+            return false;
+        }
         boolean sent = this.location.getWorld() != location.getWorld() || this.location.distanceSquared(location) > 0.000001 || this.location.getYaw() != location.getYaw() || this.location.getPitch() != location.getPitch();
         this.location = location.clone();
         if (sent) sendLocationPacket(viewers);
