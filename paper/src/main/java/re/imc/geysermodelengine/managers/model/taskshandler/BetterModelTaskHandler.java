@@ -96,6 +96,7 @@ public class BetterModelTaskHandler implements TaskHandler {
     @Override
     public void sendEntityData(EntityData entityData, Player player, int delay) {
         BetterModelEntityData betterModelEntityData = (BetterModelEntityData) entityData;
+        long propertiesSendDelay = plugin.getConfigManager().getConfig().getInt("models.properties-send-delay", 1);
 
         EntityUtils.setCustomEntity(player, betterModelEntityData.getEntity().getEntityId(), plugin.getConfigManager().getConfig().getString("models.namespace") + ":" + betterModelEntityData.getEntityTracker().name().toLowerCase());
         if (plugin.getConfigManager().getConfig().getBoolean("options.debug.send-data")) plugin.getLogger().info("Setting custom entity data for " + betterModelEntityData.getEntityTracker().name());
@@ -110,8 +111,8 @@ public class BetterModelTaskHandler implements TaskHandler {
                 plugin.getEntityTaskManager().getPropertyHandler().sendColor(entityData, Collections.singleton(player), lastColor, true);
 
                 plugin.getEntityTaskManager().getPropertyHandler().updateEntityProperties(entityData, Collections.singleton(player), true);
-            }, 500, TimeUnit.MILLISECONDS);
-        }, delay * 50L, TimeUnit.MILLISECONDS);
+            }, propertiesSendDelay, TimeUnit.MILLISECONDS);
+        }, delay, TimeUnit.MILLISECONDS);
     }
 
     @Override

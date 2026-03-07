@@ -3,10 +3,10 @@ metrics:
 
 models:
   namespace: "modelengine"
-  data-send-delay: 5
-  entity-view-distance: 50
-  join-send-delay: 20
-  entity-position-update-period: 35
+  join-send-delay: 20 # ms
+  spawn-send-delay: 1 # ms
+  properties-send-delay: 1 # ms
+  entity-position-update-period: 35 # ms
   thread-pool-size: 4
 
 options:
