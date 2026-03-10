@@ -39,7 +39,7 @@ public class ModelEngineEntityData implements EntityData {
         Location location = modeledEntity.getBase().getLocation();
         entity.teleport(location);
 
-        if (plugin.getConfigManager().getConfig().getBoolean("options.debug.location")) plugin.getLogger().info(location.toString());
+        if (plugin.getConfigManager().getConfig().getBoolean("options.debug.location")) plugin.getLogger().info(activeModel.getBlueprint().getName() + " " + location);
     }
 
     public void runEntityTask() {

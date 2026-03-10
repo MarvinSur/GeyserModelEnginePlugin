@@ -2,5 +2,7 @@ models:
   namespace: "modelengine"
 
 options:
+  debug:
+    geometry-bones: false
   resource-pack:
     auto-load: true

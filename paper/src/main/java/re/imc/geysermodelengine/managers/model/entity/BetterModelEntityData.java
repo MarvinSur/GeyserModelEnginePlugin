@@ -51,7 +51,7 @@ public class BetterModelEntityData implements EntityData {
         Location location = ((BukkitLocation) entitySource.location()).source();
         entity.teleport(location);
 
-        if (plugin.getConfigManager().getConfig().getBoolean("options.debug.location")) plugin.getLogger().info(location.toString());
+        if (plugin.getConfigManager().getConfig().getBoolean("options.debug.location")) plugin.getLogger().info(entityTracker.name() + " " + location);
     }
 
     public void runEntityTask() {

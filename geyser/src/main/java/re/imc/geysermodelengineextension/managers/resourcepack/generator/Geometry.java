@@ -1,6 +1,7 @@
 package re.imc.geysermodelengineextension.managers.resourcepack.generator;
 
 import com.google.gson.*;
+import re.imc.geysermodelengineextension.GeyserModelEngineExtension;
 import re.imc.geysermodelengineextension.managers.resourcepack.generator.data.BoneData;
 
 import java.util.*;
@@ -68,6 +69,8 @@ public class Geometry {
     }
 
     public void addAllChildren(BoneData p, BoneData c) {
+        if (GeyserModelEngineExtension.getExtension().getConfigManager().getConfig().getBoolean("options.debug.geometry-bones")) GeyserModelEngineExtension.getExtension().logger().info(modelId + " " + p.getName());
+
         p.getAllChildren().add(c);
         BoneData parent = bones.get(p.getParent());
         if (parent != null) {

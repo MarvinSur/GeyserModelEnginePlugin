@@ -11,7 +11,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DarkyenusTimeTracker">
-    <option name="totalTimeSeconds" value="59859" />
+    <option name="totalTimeSeconds" value="62979" />
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
@@ -83,6 +83,7 @@
     "Gradle.Build GeyserModelEngine.executor": "Run",
     "Gradle.Download Sources.executor": "Run",
     "Gradle.GeyserModelEngine [:geyser:build].executor": "Run",
+    "Gradle.GeyserModelEngine [assemble].executor": "Run",
     "Gradle.GeyserModelEngine [buildDependents].executor": "Run",
     "Gradle.GeyserModelEngine [buildNeeded].executor": "Run",
     "Gradle.GeyserModelEngine [build].executor": "Run",
@@ -139,7 +140,7 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="GeyserModelEngine [buildNeeded]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="GeyserModelEngine [assemble]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -150,7 +151,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="buildNeeded" />
+            <option value="assemble" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -230,10 +231,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.GeyserModelEngine [build]" />
-        <item itemvalue="Gradle.GeyserModelEngine [:geyser:build]" />
+        <item itemvalue="Gradle.GeyserModelEngine [assemble]" />
         <item itemvalue="Gradle.GeyserModelEngine [jar]" />
+        <item itemvalue="Gradle.GeyserModelEngine [:geyser:build]" />
         <item itemvalue="Gradle.GeyserModelEngine [clean]" />
-        <item itemvalue="Gradle.GeyserModelEngine [buildNeeded]" />
       </list>
     </recent_temporary>
   </component>

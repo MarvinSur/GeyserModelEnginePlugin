@@ -1,14 +1,13 @@
 # GeyserModelEngine 
-# About
-
 Thanks to [Willem](https://github.com/OmeWillem) for adding the following features:
 - Part Visibility
 - Color support
 - Scaling support
 - & more
+# About
+This plugin converts ModelEngine/BetterModel models for bedrock players!
 
 # How To Install
-
 Download the following plugins according to what server software you use.
 
 | plugins                        | Link                                                                 | effect                          |
