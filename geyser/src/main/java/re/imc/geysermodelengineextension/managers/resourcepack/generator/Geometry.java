@@ -39,11 +39,10 @@ public class Geometry {
     public void modify() {
         JsonArray array = getInternal().get("bones").getAsJsonArray();
         Iterator<JsonElement> iterator = array.iterator();
-        while (iterator.hasNext()) {
+        while(iterator.hasNext()) {
             JsonElement element = iterator.next();
             if (element.isJsonObject()) {
                 String name = element.getAsJsonObject().get("name").getAsString().toLowerCase(Locale.ROOT);
-
                 String parent = element.getAsJsonObject().has("parent") ? element.getAsJsonObject().get("parent").getAsString().toLowerCase() : null;
                 element.getAsJsonObject().remove("name");
                 element.getAsJsonObject().addProperty("name", name);
@@ -65,17 +64,15 @@ public class Geometry {
                 }
             }
         }
+
         setId("geometry.meg_" + modelId);
     }
 
-    public void addAllChildren(BoneData p, BoneData c) {
-        if (GeyserModelEngineExtension.getExtension().getConfigManager().getConfig().getBoolean("options.debug.geometry-bones")) GeyserModelEngineExtension.getExtension().logger().info(modelId + " " + p.getName());
-
-        p.getAllChildren().add(c);
+    private void addAllChildren(BoneData p, BoneData c) {
+        if (GeyserModelEngineExtension.getExtension().getConfigManager().getConfig().getBoolean("options.debug.geometry-bones")) GeyserModelEngineExtension.getExtension().logger().info("Model ID: " + modelId + " " + p.getName());
+        if (!p.getAllChildren().add(c)) return;
         BoneData parent = bones.get(p.getParent());
-        if (parent != null) {
-            addAllChildren(parent, c);
-        }
+        if (parent != null && parent != p) addAllChildren(parent, c);
     }
 
     public void setModelId(String modelId) {

@@ -3,8 +3,8 @@ plugins {
     id("com.gradleup.shadow") version "9.2.2"
 }
 
-group = "me.zimzaza4"
-version = "1.0.2"
+group = "re.imc"
+version = "1.0.3"
 
 repositories {
     mavenCentral()
@@ -27,7 +27,7 @@ dependencies {
 tasks.shadowJar {
     archiveFileName.set("${rootProject.name}Extension-${version}.jar")
 
-    relocate("org.spongepowered.configurate", "me.zimzaza4.geysermodelengineextension.libs.configurate")
+    relocate("org.spongepowered.configurate", "re.imc.geysermodelengineextension.libs.configurate")
 }
 
 tasks.build {

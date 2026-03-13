@@ -11,7 +11,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DarkyenusTimeTracker">
-    <option name="totalTimeSeconds" value="62979" />
+    <option name="totalTimeSeconds" value="65509" />
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
@@ -78,33 +78,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.Build GeyserModelEngine.executor": "Run",
-    "Gradle.Download Sources.executor": "Run",
-    "Gradle.GeyserModelEngine [:geyser:build].executor": "Run",
-    "Gradle.GeyserModelEngine [assemble].executor": "Run",
-    "Gradle.GeyserModelEngine [buildDependents].executor": "Run",
-    "Gradle.GeyserModelEngine [buildNeeded].executor": "Run",
-    "Gradle.GeyserModelEngine [build].executor": "Run",
-    "Gradle.GeyserModelEngine [clean].executor": "Run",
-    "Gradle.GeyserModelEngine [jar].executor": "Run",
-    "Maven.GeyserModelEngine [install...].executor": "Run",
-    "Maven.GeyserModelEngine [install].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Coding/Minecraft/GeyserExtensionists/GeyserModelEngine",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.Build GeyserModelEngine.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Download Sources.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.GeyserModelEngine [:geyser:build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.GeyserModelEngine [assemble].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.GeyserModelEngine [buildDependents].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.GeyserModelEngine [buildNeeded].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.GeyserModelEngine [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.GeyserModelEngine [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.GeyserModelEngine [jar].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.GeyserModelEngine [install...].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.GeyserModelEngine [install].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Coding/Minecraft/GeyserExtensionists/GeyserModelEngine&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Coding\Forks\Minecraft\GeyserModelEngine\geyser" />
