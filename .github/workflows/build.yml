@@ -13,7 +13,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       
-      # Setup JDK
       - name: Setup Java JDK
         uses: actions/setup-java@v3
         with:
